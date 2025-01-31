@@ -12,13 +12,13 @@ st.write(
 # Ask user for their OpenAI API key via `st.text_input`.
 # Alternatively, you can store the API key in `./.streamlit/secrets.toml` and access it
 # via `st.secrets`, see https://docs.streamlit.io/develop/concepts/connections/secrets-management
-openai_api_key = st.text_input("OpenAI API Key", type="password")
+openai_api_key = st.text_input("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", type="password")
 if not openai_api_key:
     st.info("Please add your OpenAI API key to continue.", icon="🗝️")
 else:
 
     # Create an OpenAI client.
-    client = OpenAI(api_key=openai_api_key)
+    client = OpenAI(api_key="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")
 
     # Create a session state variable to store the chat messages. This ensures that the
     # messages persist across reruns.
@@ -32,12 +32,14 @@ else:
 
     # Create a chat input field to allow the user to enter a message. This will display
     # automatically at the bottom of the page.
-    if prompt := st.chat_input("What is up?"):
+    if prompt := st.chat_input("What is up Mister?"):
 
         # Store and display the current prompt.
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
             st.markdown(prompt)
+
+
 
         # Generate a response using the OpenAI API.
         stream = client.chat.completions.create(
